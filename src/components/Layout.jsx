@@ -1,13 +1,15 @@
 import React from "react";
-// import { StyledLayout } from './Layout.styled';
+// import Header from "./Header";
+import { StyledAppHeader} from './LayoutStyling'
 import Header from "./Header";
 
-const Layout = ({ children }) => {
+const Layout = ({children}) => {
   return (
-    <div>
-      <Header />
+
+    <StyledAppHeader>
+      <Header/>
       <h1>hello</h1>
-    </div>
+    </StyledAppHeader>
   );
 };
 

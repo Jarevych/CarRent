@@ -1,19 +1,23 @@
 import "./App.css";
 import Catalog from "./pages/Catalog";
 import "./fonts.css";
-// import { Filter } from './components/Filter';
 import Layout from "./components/Layout";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
+// import Layout from "components/Layout";
 
-function App() {
+function App () {
   return (
     <Layout>
       <Routes>
-        <Route path="/" element={<HomePage/>} />
+        {/* <Route path="/" element={<Layout />} > */}
+        <Route index element={<HomePage />} />
+
         <Route path="catalog" element={<Catalog />} />
+        <Route path="*" element={<HomePage />} />
+        {/* </Route> */}
       </Routes>
-    </Layout>
+     </Layout>
   );
 }
 
