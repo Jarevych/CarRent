@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
-import { fetchAllCars } from "../api";
+import { useEffect, useState, } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAllCars } from "../services/ApiHandler";
 import { StyledContainer } from "./HomePageStyled";
 
 export default function HomePage() {
@@ -8,19 +9,25 @@ export default function HomePage() {
   const [mileageFrom, setMileageFrom] = useState(null);
   const [mileageTo, setMileageTo] = useState(null);
 
-  const [cars, setCars] = useState(null);
+  // const [cars, setCars] = useState(null);
 
-  const showCars = async () => {
-    try {
-      const response = await fetchAllCars();
-      setCars(response);
-      console.log(response);
-    } catch (error) {}
-  };
+  // const showCars = async () => {
+  //   try {
+  //     const response = await fetchAllCars();
+  //     setCars(response);
+  //     console.log(response);
+  //   } catch (error) {}
+  // };
 
+  const dispatch = useDispatch();
+  
+  const cars = useSelector((state) => state.catalog.catalog);
+console.log(cars)
   useEffect(() => {
-    showCars();
-  }, []);
+    dispatch(fetchAllCars());
+  }, [dispatch]);
+
+
   const carsArr = Array.isArray(cars) && cars.length;
 
   const brands = cars?.map((car) => car.make);
