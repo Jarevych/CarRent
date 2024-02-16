@@ -1,16 +1,13 @@
-import React from 'react';
+import React from "react";
 // import { StyledLayout } from './Layout.styled';
-// import { Header } from 'components';
+import Header from "./Header";
 
 const Layout = ({ children }) => {
   return (
-    // <StyledLayout>
     <div>
-<h1>hello</h1>
-        {/* <Header /> */}
-        {/* <main>{children}</main> */}
+      <Header />
+      <h1>hello</h1>
     </div>
-    // </StyledLayout>
   );
 };
 

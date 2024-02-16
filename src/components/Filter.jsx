@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useState } from 'react';
-import { setBrand, setPrice, setMileageFrom, setMileageTo } from "../redux/filterSlice"
+// import { setBrand, setPrice, setMileageFrom, setMileageTo } from "../redux/filterSlice"
 
 
 export const  Filter = () => {
