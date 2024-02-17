@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+// import { persistReducer } from 'redux-persist';
 // import { createAction } from '@reduxjs/toolkit';
 import { fetchAllCars } from '../services/ApiHandler';
+// import { persistConfig } from './store'
 
 const INITIAL_STATE = {
     items: [],
@@ -47,15 +47,7 @@ extraReducers: (builder) =>
     })
 })
 
-const persistConfig = {
-    key: 'catalog',
-    storage,
-    whitelist: ['catalog'],
-};
 
-export const persistedReducer = persistReducer(
-    persistConfig, 
-    catalogSlice.reducer
-);
+
 
 export const catalogReducer = catalogSlice.reducer;

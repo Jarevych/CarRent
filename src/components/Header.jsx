@@ -9,7 +9,7 @@ const Header = () => {
             <nav className="header-nav">
                 <StyledNavLink to={'/'}>Home</StyledNavLink>
                 <StyledNavLink to={'/catalog'}>Catalog</StyledNavLink>
-                <StyledNavLink to={'/favourites'}>Favourites</StyledNavLink>
+                <StyledNavLink to={'/favorite'}>Favorites</StyledNavLink>
 
             </nav>
         </StyledAppHeader>

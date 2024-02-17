@@ -1,7 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { catalogReducer } from './CatalogSlice';
+// import { catalogReducer } from './CatalogSlice';
+import storage from 'redux-persist/lib/storage';
+
 
 import {
+  persistReducer,
   persistStore,
   FLUSH,
   REHYDRATE,
@@ -10,12 +13,23 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+import { catalogReducer } from './CatalogSlice';
 
+const persistConfig = {
+  key: 'catalog',
+  storage,
+  whitelist: ['favoriteId', 'catalog'],
+};
+
+export const persistedReducer = persistReducer(
+  persistConfig, 
+  catalogReducer
+);
 
 
 export const store = configureStore({
   reducer: {
-    catalog: catalogReducer,
+    catalog: persistedReducer,
     // filter: filterReducer,
   },
   middleware: getDefaultMiddleware =>
@@ -25,5 +39,4 @@ export const store = configureStore({
       },
     }),
 });
-
 export const persistor = persistStore(store);
