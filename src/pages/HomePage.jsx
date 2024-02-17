@@ -2,7 +2,7 @@ import React from 'react';
 // import { StyledLayout } from './Layout.styled';
 import { StyledContainer } from './HomePageStyled';
 // import { Header } from 'components';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const HomePage = () => {
   return (
