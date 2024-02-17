@@ -3,9 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAllCars } from "../services/ApiHandler";
 import { StyledContainer } from "./CatalogStyled";
 import { Filter } from "../components/Filter";
+import { ReactComponent as IconActive } from '../assets/favor-active.svg'
+import { ReactComponent as IconNormal } from '../assets/favor-normal.svg'
+import { toggleFavorite } from "../redux/CatalogSlice";
 
 const Catalog = () => {
   const dispatch = useDispatch();
+  const favorite = useSelector((state) => state.catalog.favoriteId)
+
 
   const cars = useSelector((state) => state.catalog.catalog);
   console.log(cars);
@@ -13,7 +18,12 @@ const Catalog = () => {
     dispatch(fetchAllCars());
   }, [dispatch]);
 
+  const toggleFavor = (itemId) => {
+    dispatch(toggleFavorite(itemId))
+
+  }
   const carsArr = Array.isArray(cars) && cars.length;
+  // const isFavorite = favorite.includes(car.id)
 
   return (
     <StyledContainer>
@@ -23,6 +33,10 @@ const Catalog = () => {
           cars.map((car) => (
             <li key={car.id} className="car-item">
               <div className="item-img">
+                <button type="button" className="favor" onClick={() => toggleFavor(car.id)}>
+                  {favorite.includes(car.id) ? <IconActive/> : <IconNormal/> }
+                </button>
+
                 <img
                   src={car.img}
                   alt={`${car.make} ${car.model}`}

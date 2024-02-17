@@ -8,14 +8,31 @@ const INITIAL_STATE = {
     items: [],
     isLoading: false,
     error: null,
-    favouriteId: [],
+    favoriteId: [],
 };
+
+export const toggleFavorite = (itemId) => ({
+    type: 'catalog/toggleFavorite',
+    payload: itemId,
+})
 
 const catalogSlice = createSlice({
     name: 'catalog',
     initialState: INITIAL_STATE,
 
-    extraReducers: (builder) => 
+    reducers: {
+        toggleFavorite: (state, action) => {
+            const itemId = action.payload;
+            const index = state.favoriteId.indexOf(itemId);
+            if(index === -1) {
+                state.favoriteId.push(itemId);
+            } else {
+                state.favoriteId.splice(index, 1);
+            }
+        }   
+    },
+
+extraReducers: (builder) => 
     builder.addCase(fetchAllCars.pending, (state, action) => {
         state.isLoading = true;
         state.error = null

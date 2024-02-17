@@ -1,23 +1,21 @@
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useState } from 'react';
-// import { setBrand, setPrice, setMileageFrom, setMileageTo } from "../redux/filterSlice"
-
 
 export const  Filter = () => {
     const [brand, setBrand] = useState(null);
     const [price, setPrice] = useState(null);
     const [mileageFrom, setMileageFrom] = useState(null);
     const [mileageTo, setMileageTo] = useState(null);
-    const cars = useSelector((state) => state.catalog.cars);
+    const cars = useSelector((state) => state.catalog.catalog);
     const dispatch = useDispatch();
   
+    console.log(cars)
     const handleSearch = () => {
         dispatch(setBrand(brand));
         dispatch(setPrice(price));
         dispatch(setMileageFrom(mileageFrom));
         dispatch(setMileageTo(mileageTo));
     }
-    // const carsArr = Array.isArray(cars) && cars.length;
 
     const brands = cars?.map((car) => car.make);
     const uniqueBrands = [...new Set(brands)];

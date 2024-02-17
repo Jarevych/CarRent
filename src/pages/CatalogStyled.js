@@ -92,6 +92,7 @@ label {
     /* font-weight: 500; */
   }
   .item-img {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -149,4 +150,14 @@ label {
   .span-color {
     color: #3470FF;
   }
+  .favor {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background-color: transparent;
+  border: 0;
+  /* z-index: 100; */
+  /* fill: none; */
+}
+
 `;

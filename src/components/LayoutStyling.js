@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 
 export const StyledAppHeader = styled.div`
   position: relative;
@@ -10,7 +10,7 @@ export const StyledAppHeader = styled.div`
     gap: 40px;
     padding: 20px;
     font-size: 24px;
-    background-color: #9393da;
+    /* background-color: #9393da; */
   }
   .active {
     color: red;
@@ -22,15 +22,4 @@ export const StyledAppHeader = styled.div`
     background-color: red;
   }
 `;
-export const StyledNavLink = styled(NavLink)`
-  border: 1px solid #b3b3ef;
-  padding: 5px 15px;
-  border-radius: 5px;
-  text-decoration: none;
-  background-color: #b3b3ef;
-  font-weight: 700;
-  &:hover {
-    background-color: #9393da;
-    border-color: #9393da;
-  }
-`;
+

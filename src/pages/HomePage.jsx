@@ -1,11 +1,12 @@
 import React from 'react';
 // import { StyledLayout } from './Layout.styled';
+import { StyledContainer } from './HomePageStyled';
 // import { Header } from 'components';
 
 const HomePage = () => {
   return (
     
-    <div>
+    <StyledContainer>
 <h1 className="title animate__animated animate__slideInDown">
         Discover Your Drive: <br /> Your Ultimate Car Rental Destination
       </h1>
@@ -18,7 +19,7 @@ const HomePage = () => {
         are traveling for business or leisure, we ensure that your automotive
         adventures are unforgettable and safe.
       </p>
-    </div>
+    </StyledContainer>
     // </StyledLayout>
   );
 };
