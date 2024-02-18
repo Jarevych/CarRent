@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledContainer = styled.div`
 max-width: 1440px;
-margin: 0 auto;
+margin: 100px auto;
 /* padding: 0 128px; */
 /* .catalog-item{
     width: 274px;
