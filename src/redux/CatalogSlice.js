@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchAllCars } from '../services/ApiHandler';
-import { filterCatalog } from './filterSlice';
+// import { filterCatalog } from './filterSlice';
 
 
 export const toggleFavorite = (itemId) => ({

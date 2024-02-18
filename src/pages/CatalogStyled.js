@@ -25,6 +25,12 @@ export const StyledContainer = styled.div`
     line-height: 1.42;
     color: #fff;
   }
+  .lear-btn:hover {
+    background-color: #0B44CD;
+  }
+  .lear-btn:focus {
+    background-color: #0B44CD;
+  }
   .search-btn {
     display: flex;
     width: 136px;

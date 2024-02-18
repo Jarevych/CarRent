@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useState } from 'react';
-import { setBrand, setPrice } from '../redux/filterSlice';
+// import { setBrand, setPrice } from '../redux/filterSlice';
 import { updateFilters } from '../redux/filterSlice';
 import { StyledContainer } from './FilterStyled';
 

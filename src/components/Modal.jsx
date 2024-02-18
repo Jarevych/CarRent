@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+// import { useState } from "react";
+// import { useSelector } from "react-redux";
 
 export const Modal = ({ selectedCar, closeModal }) => {
     return (

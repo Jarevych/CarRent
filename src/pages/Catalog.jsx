@@ -7,7 +7,7 @@ import { ReactComponent as IconActive } from '../assets/favor-active.svg';
 import { ReactComponent as IconNormal } from '../assets/favor-normal.svg';
 import { toggleFavorite } from '../redux/CatalogSlice';
 import { ProgressBar } from 'react-loader-spinner'
-import { Modal } from 'components/Modal';
+import { Modal } from '../components/Modal';
 // import { filterCatalog } from '../redux/filterSlice'
 // import { handleModal } from '../components/Modal'
 
@@ -19,7 +19,7 @@ const Catalog = () => {
   const [isLoading, setIsLoading] = useState(false);
   const brandFilter = useSelector((state) => state.filter.brand);
   const priceFilter = useSelector((state) => state.filter.price);
-  // const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCar, setSelectedCar] = useState(null);
 
   const HandleLoadMore = () => {
@@ -42,12 +42,12 @@ console.log(cars)
     }
   }, [dispatch, page]);
   const openModal = (car) => {
+    setIsModalOpen(true);
     setSelectedCar(car);
-    // setIsModalOpen(true);
   };
   const closeModal = () => {
     setSelectedCar(null);
-    // setIsModalOpen(false);
+    setIsModalOpen(false);
   };
 
 const toggleFavor = itemId => {
@@ -131,8 +131,7 @@ const toggleFavor = itemId => {
         Load more
       </button>
 
-      {/* {isModalOpen && <Modal car={selectedCar} closeModal={closeModal} />} */}
-      <Modal car={selectedCar} closeModal={closeModal} /> 
+      {isModalOpen && <Modal car={selectedCar} closeModal={closeModal} />}
     </StyledContainer>
   );
 };
