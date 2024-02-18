@@ -3,10 +3,10 @@ import { fetchAllCars } from '../services/ApiHandler';
 // import { filterCatalog } from './filterSlice';
 
 
-export const toggleFavorite = (itemId) => ({
-    type: 'itams/toggleFavorite',
-    payload: itemId,
-})
+// export const toggleFavorite = (itemId) => ({
+//     type: 'items/toggleFavorite',
+//     payload: itemId,
+// })
 
 const catalogSlice = createSlice({
   name: 'catalog',
@@ -62,5 +62,5 @@ const catalogSlice = createSlice({
   },
 });
 
-export const { setCatalogItems } = catalogSlice.actions;
+export const { setCatalogItems, toggleFavorite } = catalogSlice.actions;
 export const catalogReducer = catalogSlice.reducer;

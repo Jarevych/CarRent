@@ -10,6 +10,12 @@ export const StyledContainer = styled.div`
     height: 426px;
 
 } */
+.centered {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 100vh; 
+}
   .lear-btn {
     display: flex;
     width: 274px;

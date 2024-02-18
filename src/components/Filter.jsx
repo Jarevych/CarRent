@@ -1,22 +1,19 @@
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useState } from 'react';
-// import { setBrand, setPrice } from '../redux/filterSlice';
 import { updateFilters } from '../redux/filterSlice';
 import { StyledContainer } from './FilterStyled';
-
 
 export const Filter = () => {
   const [selectedCarBrand, setSelectedCarBrand] = useState({
     label: '',
     value: '',
   });
-  const [selectedCarRent, setSelectedCarRent] = useState("");
+  const [selectedCarRent, setSelectedCarRent] = useState('');
   const [mileageFrom, setMileageFrom] = useState('');
   const [mileageTo, setMileageTo] = useState(null);
   const cars = useSelector(state => state.catalog.items);
   const dispatch = useDispatch();
 
-  
   const onSubmit = e => {
     e.preventDefault();
     dispatch(
@@ -37,7 +34,6 @@ export const Filter = () => {
     const priceB = parseInt(b.slice(1)); // Перетворення рядка на число та видалення символу "$"
     return priceA - priceB;
   });
-
 
   return (
     <StyledContainer>
@@ -106,7 +102,6 @@ export const Filter = () => {
           </div>
         </div>
         <button type="submit" className="search-btn">
-          
           Search
         </button>
       </form>
