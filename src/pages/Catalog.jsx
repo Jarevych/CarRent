@@ -7,8 +7,9 @@ import { ReactComponent as IconActive } from '../assets/favor-active.svg';
 import { ReactComponent as IconNormal } from '../assets/favor-normal.svg';
 import { toggleFavorite } from '../redux/CatalogSlice';
 import { ProgressBar } from 'react-loader-spinner'
-
-
+import { Modal } from 'components/Modal';
+// import { filterCatalog } from '../redux/filterSlice'
+// import { handleModal } from '../components/Modal'
 
 const Catalog = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,10 @@ const Catalog = () => {
   const cars = useSelector(state => state.catalog.items)
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+  const brandFilter = useSelector((state) => state.filter.brand);
+  const priceFilter = useSelector((state) => state.filter.price);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCar, setSelectedCar] = useState(null);
 
   const HandleLoadMore = () => {
     dispatch(fetchAllCars(page + 1)); 
@@ -36,12 +41,28 @@ console.log(cars)
         });
     }
   }, [dispatch, page]);
-  
-  const toggleFavor = itemId => {
+  const openModal = (car) => {
+    setSelectedCar(car);
+    // setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setSelectedCar(null);
+    // setIsModalOpen(false);
+  };
+
+const toggleFavor = itemId => {
     dispatch(toggleFavorite(itemId));
   };
-  const carsArr = Array.isArray(cars) && cars.length;
 
+  const filteredCars = cars.filter(car => {
+    if (brandFilter && car.make !== brandFilter) return false;
+    if (priceFilter && !car.rentalPrice.includes(priceFilter)) return false;
+    console.log(car.rentalPrice.includes(priceFilter))
+    return true;
+  });
+
+  const carsArr = Array.isArray(cars) && cars.length;
+  console.log(filteredCars)
   return (
     <StyledContainer>
       <Filter />
@@ -58,9 +79,11 @@ console.log(cars)
   borderColor="#3470ff"
   />
 ):(
+  <>
+  {(filteredCars && filteredCars.length > 0) || (!brandFilter && cars.length > 0) ? (
       <ul className="cars-list">
         {carsArr &&
-          cars.map(car => (
+          filteredCars.map(car => (
             <li key={car.id} className="car-item">
               <div className="item-img">
                 <button
@@ -89,27 +112,27 @@ console.log(cars)
                     {car.address.split(',')[1]?.trim()} |{' '}
                     {car.address.split(',')[2]?.trim()} | {car.rentalCompany} |{' '}
                     {car.type} | {car.model} | {car.id} | {car.accessories[0]}
-                    {/* {Array.isArray(car.accessories) &&
-                      car.accessories.length > 0 && (
-                        <>
-                          <ul>
-                            <li>{car.accessories[0]}</li>
-                          </ul>
-                        </>
-                      )} */}
+                 
                   </>
                 )}
               </div>
-              <button type="button" className="lear-btn">
-                Learn more
+              <button type="button" className="lear-btn" onClick={() => openModal(car)}> 
+                 Learn more
               </button>
             </li>
           ))}
       </ul>
+  ) : (
+    <p>No cars found</p>
+      )}
+      </>
       )}
       <button className="searchbtn" type="button" onClick={HandleLoadMore}>
         Load more
       </button>
+
+      {/* {isModalOpen && <Modal car={selectedCar} closeModal={closeModal} />} */}
+      <Modal car={selectedCar} closeModal={closeModal} /> 
     </StyledContainer>
   );
 };

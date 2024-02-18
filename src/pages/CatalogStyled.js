@@ -51,35 +51,7 @@ export const StyledContainer = styled.div`
     color: rgba(138, 138, 137, 1);
   }
 
-  .filter-item {
-    display: flex;
-    min-width: 125px;
-    height: 48px;
-    width: 160px;
-    border-radius: 14px;
-    font-size: 18px;
-    line-height: 1.12;
-    border: 0;
-    background-color: rgba(247, 247, 251, 1);
-  }
-  .filter {
-    display: flex;
-    justify-content: center;
-    align-items: end;
-    margin-top: 150px;
-    margin-bottom: 50px;
-    height: 74px;
-    gap: 18px;
-  }
-  .input-from {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-right: 1px solid rgba(138, 138, 137, 0.2);
-  }
-  .input-to {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
+  
   .cars-list {
     width: 1184px;
     margin: 0 auto;
@@ -171,6 +143,7 @@ export const StyledContainer = styled.div`
     height: 24px;
     font-weight: 500;
     font-size: 16px;
-    line-height: 24px;
-  }
+    line-height: 24px; 
+   }
+  
 `;

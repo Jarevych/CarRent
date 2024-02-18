@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 // import { catalogReducer } from './CatalogSlice';
 import storage from 'redux-persist/lib/storage';
-
+import { filterReducer } from './filterSlice';
 
 import {
   persistReducer,
@@ -30,7 +30,7 @@ export const persistedReducer = persistReducer(
 export const store = configureStore({
   reducer: {
     catalog: persistedReducer,
-    // filter: filterReducer,
+    filter: filterReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

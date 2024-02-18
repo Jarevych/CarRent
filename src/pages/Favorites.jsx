@@ -10,7 +10,7 @@ import { StyledContainer } from './FavoriteStyled'
 export const Favorite = () => {
     const dispatch = useDispatch();
     const favorite = useSelector((state) => state.catalog.favoriteId)
-    const cars = useSelector((state) => state.catalog.catalog)
+    const cars = useSelector((state) => state.catalog.items)
     console.log(favorite, cars)
 
     const toggleFavor = (itemId) => {
