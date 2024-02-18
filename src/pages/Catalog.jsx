@@ -6,6 +6,9 @@ import { Filter } from '../components/Filter';
 import { ReactComponent as IconActive } from '../assets/favor-active.svg';
 import { ReactComponent as IconNormal } from '../assets/favor-normal.svg';
 import { toggleFavorite } from '../redux/CatalogSlice';
+import { ProgressBar } from 'react-loader-spinner'
+
+
 
 const Catalog = () => {
   const dispatch = useDispatch();
@@ -43,7 +46,17 @@ console.log(cars)
     <StyledContainer>
       <Filter />
       {isLoading ? (
-  <h2>Page is Loading...</h2>
+  <ProgressBar
+  visible={true}
+  height="80"
+  width="80"
+  color="#4fa94d"
+  ariaLabel="progress-bar-loading"
+  wrapperStyle={{}}
+  wrapperClass=""
+  barColor="#3470ff"
+  borderColor="#3470ff"
+  />
 ):(
       <ul className="cars-list">
         {carsArr &&
