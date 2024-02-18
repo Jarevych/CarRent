@@ -12,12 +12,12 @@ const INITIAL_STATE = {
 };
 
 export const toggleFavorite = (itemId) => ({
-    type: 'catalog/toggleFavorite',
+    type: 'itams/toggleFavorite',
     payload: itemId,
 })
 
 const catalogSlice = createSlice({
-    name: 'catalog',
+    name: 'items',
     initialState: INITIAL_STATE,
 
     reducers: {

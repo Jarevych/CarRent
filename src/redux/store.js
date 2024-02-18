@@ -16,7 +16,7 @@ import {
 import { catalogReducer } from './CatalogSlice';
 
 const persistConfig = {
-  key: 'catalog',
+  key: 'items',
   storage,
   whitelist: ['favoriteId', 'catalog'],
 };

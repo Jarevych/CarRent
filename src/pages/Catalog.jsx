@@ -10,31 +10,30 @@ import { toggleFavorite } from '../redux/CatalogSlice';
 const Catalog = () => {
   const dispatch = useDispatch();
   const favorite = useSelector(state => state.catalog.favoriteId);
-  const [cars, setCars] = useState([])
+  const cars = useSelector(state => state.catalog.items)
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
 
   const HandleLoadMore = () => {
-    dispatch(fetchAllCars(page + 1)); // Отримуємо наступну сторінку даних
-    setPage(prevPage => prevPage + 1); // Оновлюємо значення сторінки
+    dispatch(fetchAllCars(page + 1)); 
+    setPage(prevPage => prevPage + 1); 
   };
-  
+  console.log(isLoading)
+
+console.log(cars)
   useEffect(() => {
-    setIsLoading(true);
-    dispatch(fetchAllCars(page))
-    .then(response => {
-    const newCars = response.payload
-    if(Array.isArray(newCars)) {
-      setCars(prevCars => [...(prevCars) || [], ...(newCars || [])])
-      setIsLoading(false);
-    } else {
-    console.error('error fetching cars', newCars);
+    if (page === 1) {
+      setIsLoading(true);
+      dispatch(fetchAllCars(page))
+      .then((response) => {
+        setIsLoading(false);
+      } )
+        .catch((error) => {
+          console.error('Error fetching cars:', error);
+        });
     }
-    })
-    .catch(error => {
-      console.error('Error fetching cars:', error);
-    })
   }, [dispatch, page]);
+  
   const toggleFavor = itemId => {
     dispatch(toggleFavorite(itemId));
   };
@@ -43,6 +42,9 @@ const Catalog = () => {
   return (
     <StyledContainer>
       <Filter />
+      {isLoading ? (
+  <h2>Page is Loading...</h2>
+):(
       <ul className="cars-list">
         {carsArr &&
           cars.map(car => (
@@ -91,6 +93,7 @@ const Catalog = () => {
             </li>
           ))}
       </ul>
+      )}
       <button className="searchbtn" type="button" onClick={HandleLoadMore}>
         Load more
       </button>
