@@ -86,7 +86,7 @@ label {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     /* font-family: Manrope; */
     font-size: 16px;
     /* font-weight: 500; */
