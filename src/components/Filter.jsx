@@ -6,7 +6,7 @@ export const  Filter = () => {
     const [price, setPrice] = useState(null);
     const [mileageFrom, setMileageFrom] = useState(null);
     const [mileageTo, setMileageTo] = useState(null);
-    const cars = useSelector((state) => state.catalog.catalog);
+    const cars = useSelector((state) => state.catalog.items);
     const dispatch = useDispatch();
   
     console.log(cars)

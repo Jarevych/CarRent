@@ -39,7 +39,7 @@ extraReducers: (builder) =>
     })
     .addCase(fetchAllCars.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.catalog = action.payload;
+        state.items = [...state.items, ...action.payload];
     })
     .addCase(fetchAllCars.rejected, (state, action) => {
         state.isLoading = false;

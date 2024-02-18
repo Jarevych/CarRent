@@ -15,9 +15,9 @@ const Catalog = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const HandleLoadMore = () => {
-    setPage((prevPage) => prevPage + 1);
-    console.log(page)
-  }  
+    dispatch(fetchAllCars(page + 1)); // Отримуємо наступну сторінку даних
+    setPage(prevPage => prevPage + 1); // Оновлюємо значення сторінки
+  };
   
   useEffect(() => {
     setIsLoading(true);
